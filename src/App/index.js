@@ -42,7 +42,6 @@ class App extends Component {
         <Logo />
         <EditorContainer>
           <AceEditor
-            ref="reactAce"
             mode="sql"
             theme="github"
             enableLiveAutocompletion={store.isAutocompleteEnabled}
