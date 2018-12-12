@@ -27,7 +27,15 @@ const CenteredSVG = styled.svg`
 export default function Logo() {
   return (
     <LogoContainer>
-      <CenteredSVG xmlns="http://www.w3.org/2000/svg" width="106" height="39">
+      <CenteredSVG
+        xmlns="http://www.w3.org/2000/svg"
+        width="106"
+        height="39"
+        aria-labelledby="xspTitle xspDesc"
+        role="img"
+      >
+        <title id="xspTitle">XSP logo</title>
+        <desc id="xspDesc">The bold text logo of this webapp.</desc>
         <path
           fill="#000"
           fillOpacity=".9"
@@ -36,7 +44,15 @@ export default function Logo() {
         />
       </CenteredSVG>
       <Separator />
-      <CenteredSVG xmlns="http://www.w3.org/2000/svg" width="263" height="21">
+      <CenteredSVG
+        xmlns="http://www.w3.org/2000/svg"
+        width="263"
+        height="21"
+        aria-labelledby="subTitle subDesc"
+        role="img"
+      >
+        <title id="subTitle">Xiaoru's SQL Playground</title>
+        <desc id="subDesc">Description text or subtitle of this webapp.</desc>
         <path
           fill="#000"
           fillOpacity=".9"
