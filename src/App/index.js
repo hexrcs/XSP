@@ -13,9 +13,9 @@ import store from "../store";
 import { Logo } from "../components";
 
 const editorStyle = {
-  width: "45rem",
-  height: "15rem",
-  fontSize: "16px",
+  width: "49rem",
+  height: "16rem",
+  fontSize: "1rem",
   margin: "0.5rem",
 };
 
@@ -47,6 +47,7 @@ class App extends Component {
             enableLiveAutocompletion={store.isAutocompleteEnabled}
             wrapEnabled={store.isWrapEnabled}
             showGutter={store.shouldShowGutter}
+            showPrintMargin={store.shouldShowPrintMargin}
             name="main-editor"
             onChange={store.updateInput}
             editorProps={{ $blockScrolling: true }}

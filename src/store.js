@@ -1,13 +1,15 @@
 import { observable, action } from "mobx";
 
 class Store {
-  // control
+  // GUI control
   @observable
   isWrapEnabled = false;
   @observable
   isAutocompleteEnabled = true;
   @observable
   shouldShowGutter = false;
+  @observable
+  shouldShowPrintMargin = false;
 
   // core functions
   @observable
