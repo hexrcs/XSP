@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { observable } from "mobx";
 import { observer } from "mobx-react";
 import styled from "@emotion/styled";
 import Button from "react-bootstrap/lib/Button";
@@ -45,6 +46,7 @@ const ButtonsDiv = styled.div`
 @observer
 class App extends Component {
   render() {
+    console.log("rerendered");
     return (
       <AppContainer>
         <Logo />
@@ -78,9 +80,8 @@ class App extends Component {
             </Button>
           </ButtonsDiv>
         </div>
-        <div>
-          <pre>{JSON.stringify(store.result)}</pre>
-        </div>
+        {/* React rerenders everything here, weird */}
+        {/* <div>{JSON.stringify(store.result)}</div> */}
       </AppContainer>
     );
   }
