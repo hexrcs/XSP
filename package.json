@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Xiaoru Li <dev@xiaoru.li> (http://xiaoru.li/)",
   "license": "MIT",
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
+  },
   "dependencies": {
     "@emotion/core": "10.0.4",
     "@emotion/styled": "10.0.4",
