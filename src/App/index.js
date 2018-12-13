@@ -34,12 +34,29 @@ const EditorContainer = styled.div`
   margin: 1rem;
 `;
 
+const ButtonsDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45rem;
+  align-self: stretch;
+`;
+
 @observer
 class App extends Component {
   render() {
     return (
       <AppContainer>
         <Logo />
+        <div>
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={() => console.log("Use sample DB")}
+          >
+            Use Sample Database
+          </Button>
+        </div>
         <EditorContainer>
           <AceEditor
             mode="sql"
@@ -55,12 +72,14 @@ class App extends Component {
           />
         </EditorContainer>
         <div>
-          <Button
-            variant="primary"
-            onClick={() => console.log(store.currentInput)}
-          >
-            Log content
-          </Button>
+          <ButtonsDiv>
+            <Button variant="primary" onClick={() => store.run()}>
+              Execute
+            </Button>
+          </ButtonsDiv>
+        </div>
+        <div>
+          <pre>{JSON.stringify(store.result)}</pre>
         </div>
       </AppContainer>
     );

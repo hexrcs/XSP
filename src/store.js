@@ -1,4 +1,5 @@
 import { observable, action } from "mobx";
+import alasql from "alasql";
 
 class Store {
   // GUI control
@@ -8,10 +9,14 @@ class Store {
   isAutocompleteEnabled = true;
   @observable
   shouldShowGutter = false;
+  //maybe not allow user to show print margin at all, meaningless in a light editor
   @observable
   shouldShowPrintMargin = false;
 
-  // core functions
+  @observable
+  isUsingSampleDB = false;
+
+  // core editor functions
   @observable
   currentInput = "";
 
@@ -27,7 +32,9 @@ class Store {
   };
 
   @action
-  run = () => {};
+  run = async () => {
+    this.result = await alasql(this.currentInput);
+  };
 }
 
 const store = new Store();
