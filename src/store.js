@@ -34,6 +34,9 @@ class Store {
   @observable
   data = [];
 
+  @observable
+  error = "";
+
   @action
   updateInput = newInput => {
     this.currentInput = newInput;
@@ -41,7 +44,22 @@ class Store {
 
   @action
   run = async () => {
-    this.result_ = await alasql(this.currentInput);
+    try {
+      this.result_ = await alasql(this.currentInput);
+      this.error = "";
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        this.error =
+          "Invalid syntax, please double check if you have misspellt anything!";
+      } else if (error instanceof TypeError) {
+        this.error =
+          "Invalid query, please double check if you have missed anything!";
+      } else {
+        this.error =
+          "Unexpected error, please check the browser console. Filing an issue on GitHub would be appreciated!";
+        console.warn(error);
+      }
+    }
   };
 }
 

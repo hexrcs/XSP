@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 import styled from "@emotion/styled";
 import JsonTable from "ts-react-json-table";
+import Alert from "react-bootstrap/lib/Alert";
 
 import store from "../store";
 
@@ -31,10 +32,12 @@ const TableContainer = styled.div`
 class Results extends Component {
   render() {
     return (
-      <TableContainer>
-        <StyledTable rows={store.result} />
-        {/* <pre>{JSON.stringify(store.result)}</pre> */}
-      </TableContainer>
+      <>
+        <TableContainer>
+          <StyledTable rows={store.result} />
+        </TableContainer>
+        {store.error && <Alert variant='danger'>{store.error}</Alert>}
+      </>
     );
   }
 }
