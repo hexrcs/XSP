@@ -22,4 +22,4 @@ I am writing an SQL tutorial and can't find a good online SQL playground. Most "
 
 ## License
 
-This project is licensed under [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+This project is licensed under [Apache License, Version 2.0](LICENSE).
