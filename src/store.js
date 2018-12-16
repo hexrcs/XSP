@@ -26,6 +26,8 @@ class Store {
   get result() {
     if (!isArrayLike(this.result_) || !this.result_.slice(-1)[0]) {
       return [];
+    } else if (!isArrayLike(this.result_.slice(-1)[0])) {
+      return this.result_;
     } else return this.result_.slice(-1)[0];
   }
 

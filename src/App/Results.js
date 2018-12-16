@@ -10,6 +10,7 @@ class Results extends Component {
     return (
       <div>
         <JsonTable rows={store.result} />
+        {/* <pre>{JSON.stringify(store.result)}</pre> */}
       </div>
     );
   }
