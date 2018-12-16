@@ -10,6 +10,8 @@ XSP is a light and fast SQL playground for your browser. It uses the amazing [Al
 
 ## How to Use
 
+Visit XSP [here](https://xsp.by.xiaoru.li/)!
+
 Just write your queries inside the editor box then click <kbd>Execute</kbd>!
 
 There's also a predefined [Chinook sample database](https://github.com/lerocha/chinook-database) for you to play with.
