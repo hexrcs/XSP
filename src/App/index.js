@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "@emotion/styled";
+import GithubCorner from 'react-github-corner';
 
 import { Logo } from "../components";
 import Settings from "./Settings";
@@ -20,6 +21,7 @@ class App extends Component {
     console.log("rerendered");
     return (
       <AppContainer>
+        <GithubCorner href="https://github.com/hexrcs/XSP"/>
         <Logo />
         <Settings />
         <Editor />
