@@ -7,7 +7,7 @@ import Alert from "react-bootstrap/lib/Alert";
 import store from "../store";
 
 const StyledTable = styled(JsonTable)`
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   width: 45rem;
   align-self: stretch;
 
@@ -28,15 +28,23 @@ const TableContainer = styled.div`
   width: 45rem;
 `;
 
+const AlertContainer = styled.div`
+  margin: 1rem;
+  height: 4rem;
+`;
+
 @observer
 class Results extends Component {
   render() {
     return (
       <>
+        <AlertContainer>
+          {store.error && <Alert variant="danger">{store.error}</Alert>}
+          {store.message && <Alert variant="primary">{store.message}</Alert>}
+        </AlertContainer>
         <TableContainer>
           <StyledTable rows={store.result} />
         </TableContainer>
-        {store.error && <Alert variant='danger'>{store.error}</Alert>}
       </>
     );
   }

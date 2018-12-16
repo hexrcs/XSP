@@ -2,6 +2,8 @@ import { observable, action, computed, isArrayLike } from "mobx";
 import alasql from "alasql";
 
 class Store {
+  database = new alasql.Database("database");
+
   // GUI control
   @observable
   isWrapEnabled = false;
@@ -36,6 +38,8 @@ class Store {
 
   @observable
   error = "";
+  @observable
+  message = "";
 
   @action
   updateInput = newInput => {
@@ -44,9 +48,10 @@ class Store {
 
   @action
   run = async () => {
+    this.message = "";
+    this.error = "";
     try {
-      this.result_ = await alasql(this.currentInput);
-      this.error = "";
+      this.result_ = await this.database.exec(this.currentInput);
     } catch (error) {
       if (error instanceof SyntaxError) {
         this.error =
@@ -55,11 +60,65 @@ class Store {
         this.error =
           "Invalid query, please double check if you have missed anything!";
       } else {
-        this.error =
-          "Unexpected error, please check the browser console. Filing an issue on GitHub would be appreciated!";
+        this.error = error.message;
         console.warn(error);
       }
     }
+  };
+
+  @action
+  resetDatabase = () => {
+    this.message = "";
+    this.database = new alasql.Database("database");
+    this.result_ = [];
+    this.message = "Database is reset!";
+  };
+
+  @action
+  useSampleDatabase = async () => {
+    this.message = "Loading sample database...";
+    this.database = new alasql.Database("database");
+    await this.database.exec(
+      'CREATE TABLE Album; SELECT * INTO Album FROM CSV("Album.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE Artist; SELECT * INTO Artist FROM CSV("Artist.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE Customer; SELECT * INTO Customer FROM CSV("Customer.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE Employee; SELECT * INTO Employee FROM CSV("Employee.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE Genre; SELECT * INTO Genre FROM CSV("Genre.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE Invoice; SELECT * INTO Invoice FROM CSV("Invoice.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE InvoiceLine; SELECT * INTO InvoiceLine FROM CSV("InvoiceLine.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE MediaType; SELECT * INTO MediaType FROM CSV("MediaType.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE Playlist; SELECT * INTO Playlist FROM CSV("Playlist.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE PlaylistTrack; SELECT * INTO PlaylistTrack FROM CSV("PlaylistTrack.csv");'
+    );
+    await this.database.exec(
+      'CREATE TABLE Track; SELECT * INTO Track FROM CSV("Track.csv");'
+    );
+
+    this.message = "Sample database loaded!";
+  };
+
+  @action
+  saveDatabase = () => {
+    this.message = "";
+    this.message = "Database saved!";
   };
 }
 
