@@ -18,4 +18,8 @@ There's also a predefined [Chinook sample database](https://github.com/lerocha/c
 
 ## Why?
 
-I am writing an SQL tutorial and can't find a good online SQL playground. Most "playground" sites have an SQL server running in the background, and some major browsers (FireFox) don't support the deprecated browser [Web SQL Database](https://en.wikipedia.org/wiki/Web_SQL_Database) standard. So I built this app that works completely on the client-side. :D
+I am writing an SQL tutorial and can't find a good online SQL playground. Most "playground" sites have an SQL server running in the background, and some major browsers (FireFox) don't support the deprecated [Web SQL Database](https://en.wikipedia.org/wiki/Web_SQL_Database) standard. So I built this app that works completely on the client-side. :D
+
+## License
+
+This project is licensed under [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
