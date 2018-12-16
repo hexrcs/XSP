@@ -15,6 +15,14 @@ const StyledTable = styled(JsonTable)`
     background: #eee;
   }
 
+  th {
+    padding: 0.5rem 1rem;
+  }
+
+  td {
+    padding: 0.5rem 1rem;
+  }
+
   thead {
     /* text-align: center; */
     border-bottom: 1px solid #ddd;
