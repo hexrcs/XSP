@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import { observable, action, computed, isArrayLike } from "mobx";
 import alasql from "alasql";
 
 class Store {
@@ -21,7 +21,13 @@ class Store {
   currentInput = "";
 
   @observable
-  result = {};
+  result_ = [];
+  @computed
+  get result() {
+    if (!isArrayLike(this.result_) || !this.result_.slice(-1)[0]) {
+      return [];
+    } else return this.result_.slice(-1)[0];
+  }
 
   @observable
   data = [];
@@ -33,7 +39,7 @@ class Store {
 
   @action
   run = async () => {
-    this.result = await alasql(this.currentInput);
+    this.result_ = await alasql(this.currentInput);
   };
 }
 

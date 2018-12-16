@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import JsonTable from "ts-react-json-table";
 
 import store from "../store";
 
@@ -8,7 +9,7 @@ class Results extends Component {
   render() {
     return (
       <div>
-        <pre>{JSON.stringify(store.result)}</pre>
+        <JsonTable rows={store.result} />
       </div>
     );
   }
