@@ -1,9 +1,8 @@
 {
   "name": "xsp",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Xiaoru Li <dev@xiaoru.li> (http://xiaoru.li/)",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html"
