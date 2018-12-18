@@ -20,7 +20,11 @@ class Store {
 
   // core editor functions
   @observable
-  currentInput = "";
+  currentInput = `CREATE TABLE IF NOT EXISTS test (language INT, hello STRING);
+INSERT INTO test VALUES (1,'Hello!');
+INSERT INTO test VALUES (2,'Aloha!');
+INSERT INTO test VALUES (3,'Bonjour!');
+SELECT * FROM test WHERE language > 1;`;
 
   @observable
   result_ = [];

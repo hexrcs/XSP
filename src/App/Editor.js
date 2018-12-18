@@ -28,6 +28,7 @@ export default function Editor() {
       <AceEditor
         mode="sql"
         theme="github"
+        defaultValue={store.currentInput}
         enableLiveAutocompletion={store.isAutocompleteEnabled}
         wrapEnabled={store.isWrapEnabled}
         showGutter={store.shouldShowGutter}
