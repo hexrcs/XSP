@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 import styled from "@emotion/styled";
 import JsonTable from "ts-react-json-table";
-import Alert from "react-bootstrap/lib/Alert";
+import Alert from "react-bootstrap/Alert";
 
 import store from "../store";
 
