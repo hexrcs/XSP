@@ -7,6 +7,7 @@ import "brace/theme/github";
 import "brace/ext/language_tools";
 
 import store from "../store";
+import { observer } from "mobx-react";
 
 const editorStyle = {
   width: "49rem",
@@ -22,22 +23,27 @@ const EditorContainer = styled.div`
   margin: 1rem;
 `;
 
-export default function Editor() {
-  return (
-    <EditorContainer>
-      <AceEditor
-        mode="sql"
-        theme="github"
-        defaultValue={store.currentInput}
-        enableLiveAutocompletion={store.isAutocompleteEnabled}
-        wrapEnabled={store.isWrapEnabled}
-        showGutter={store.shouldShowGutter}
-        showPrintMargin={store.shouldShowPrintMargin}
-        name="main-editor"
-        onChange={store.updateInput}
-        editorProps={{ $blockScrolling: true }}
-        style={editorStyle}
-      />
-    </EditorContainer>
-  );
+@observer
+class Editor extends React.Component {
+  render() {
+    return (
+      <EditorContainer>
+        <AceEditor
+          mode="sql"
+          theme="github"
+          enableLiveAutocompletion={store.isAutocompleteEnabled}
+          wrapEnabled={store.isWrapEnabled}
+          showGutter={store.shouldShowGutter}
+          showPrintMargin={store.shouldShowPrintMargin}
+          name="main-editor"
+          value={store.currentInput}
+          onChange={store.updateInput}
+          editorProps={{ $blockScrolling: true }}
+          style={editorStyle}
+        />
+      </EditorContainer>
+    );
+  }
 }
+
+export default Editor;

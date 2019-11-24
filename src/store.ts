@@ -116,6 +116,11 @@ SELECT * FROM test WHERE language > 1;`;
       'CREATE TABLE Track; SELECT * INTO Track FROM CSV("Track.csv");'
     );
 
+    this.currentInput = `SELECT Country, COUNT(*) AS CustomerCount
+    FROM Customer 
+    GROUP BY Country 
+    ORDER BY CustomerCount DESC;`;
+
     this.message = "Sample database loaded!";
   };
 
